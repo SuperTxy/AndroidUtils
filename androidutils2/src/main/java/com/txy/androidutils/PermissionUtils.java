@@ -8,6 +8,9 @@ import android.support.v4.content.ContextCompat;
 
 import com.txy.androidutils.dialog.DialogUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Apple on 17/9/10.
  */
@@ -37,14 +40,22 @@ public class PermissionUtils {
         mHasPermissionRunnable = null;
         mNoPermissionRunnable = null;
         if (isPermissionGranted(permissions))
-            mHasPermissionRunnable.run();
-        else if (ActivityCompat.shouldShowRequestPermissionRationale(context, permissions[0]))
-            mNoPermissionRunnable.run();
+            hasPermissionDo.run();
+        else if (shouldShowRequestPermissionRationale(permissions))
+            noPermissionDo.run();
         else {
-            ActivityCompat.requestPermissions(context, permissions, REQUEST_CODE_PERMISSION);
+            ActivityCompat.requestPermissions(context, noGrantedPermissions(permissions), REQUEST_CODE_PERMISSION);
             mNoPermissionRunnable = noPermissionDo;
             mHasPermissionRunnable = hasPermissionDo;
         }
+    }
+
+    private boolean shouldShowRequestPermissionRationale(String[] permissions){
+        for (String permission : permissions) {
+            if(ActivityCompat.shouldShowRequestPermissionRationale(context, permission))
+                return  true;
+        }
+        return false;
     }
 
     public boolean isPermissionGranted(String[] permissions) {
@@ -53,6 +64,16 @@ public class PermissionUtils {
                 return false;
         }
         return true;
+    }
+
+    private String[] noGrantedPermissions(String[] permissions) {
+        List<String> noPermissions = new ArrayList<>();
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                noPermissions.add(permission);
+            }
+        }
+        return (String[]) noPermissions.toArray();
     }
 
     private boolean isAllGranted(int[] grantResults) {

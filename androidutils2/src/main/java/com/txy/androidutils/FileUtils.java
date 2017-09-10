@@ -22,7 +22,7 @@ public class FileUtils {
 
     public static File createTmpFile(Context context, String prefix, String suffix) throws IOException {
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format(new Date());
-        prefix = prefix + date + "_";
+        prefix = prefix+"_" + date + "_";
         File dir;
         if (TextUtils.equals(getExternalStorageState(), MEDIA_MOUNTED)) {
             dir = Environment.getExternalStoragePublicDirectory(DIRECTORY_DCIM + "/Camera");
