@@ -22,12 +22,12 @@ class AlertHolder extends BaseHolder {
 
     AlertHolder(Context context) {
         super(context);
-        tvTitle = contentView.findViewById(R.id.tv_title);
-        tvMessage = contentView.findViewById(R.id.tv_message);
-        tvLeft = contentView.findViewById(R.id.tv_left);
-        tvRight = contentView.findViewById(R.id.tv_right);
-        tvOk = contentView.findViewById(R.id.tv_ok);
-        llDoubleButton = contentView.findViewById(R.id.ll_double_button);
+        tvTitle = (TextView) contentView.findViewById(R.id.tv_title);
+        tvMessage = (TextView) contentView.findViewById(R.id.tv_message);
+        tvLeft = (TextView) contentView.findViewById(R.id.tv_left);
+        tvRight = (TextView) contentView.findViewById(R.id.tv_right);
+        tvOk = (TextView) contentView.findViewById(R.id.tv_ok);
+        llDoubleButton = (LinearLayout) contentView.findViewById(R.id.ll_double_button);
     }
 
     void show(String title, String message) {
