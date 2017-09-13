@@ -6,10 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
+import com.orhanobut.logger.Logger;
 import com.txy.androidutils.dialog.DialogUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Apple on 17/9/10.
@@ -50,10 +48,10 @@ public class PermissionUtils {
         }
     }
 
-    private boolean shouldShowRequestPermissionRationale(String[] permissions){
+    private boolean shouldShowRequestPermissionRationale(String[] permissions) {
         for (String permission : permissions) {
-            if(ActivityCompat.shouldShowRequestPermissionRationale(context, permission))
-                return  true;
+            if (ActivityCompat.shouldShowRequestPermissionRationale(context, permission))
+                return true;
         }
         return false;
     }
@@ -67,13 +65,15 @@ public class PermissionUtils {
     }
 
     private String[] noGrantedPermissions(String[] permissions) {
-        List<String> noPermissions = new ArrayList<>();
-        for (String permission : permissions) {
-            if (ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
-                noPermissions.add(permission);
+        StringBuilder noPermissions = new StringBuilder();
+        for (int i = 0; i < permissions.length; i++) {
+            if (ContextCompat.checkSelfPermission(context, permissions[i]) != PackageManager.PERMISSION_GRANTED) {
+                if(i != 0) noPermissions.append(",");
+                noPermissions.append(permissions[i]);
             }
         }
-        return (String[]) noPermissions.toArray();
+        Logger.e(noPermissions.toString().split(",").toString());
+        return noPermissions.toString().split(",");
     }
 
     private boolean isAllGranted(int[] grantResults) {
