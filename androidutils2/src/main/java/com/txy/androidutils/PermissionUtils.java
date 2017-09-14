@@ -1,5 +1,6 @@
 package com.txy.androidutils;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -19,6 +20,10 @@ public class PermissionUtils {
     private int REQUEST_CODE_PERMISSION = 1000;
     private Activity context;
     private DialogUtils dialogUtils;
+    private String[] recordPermissions = {Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    private String[] cameraPermissions = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    private String[] storagePermissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
 
     public PermissionUtils(Activity context) {
         this.context = context;
@@ -32,6 +37,18 @@ public class PermissionUtils {
                 dialogUtils.showPermissionDialog(message);
             }
         });
+    }
+
+    public void checkRecordVideoPermission(Runnable hasPermissionRunnable) {
+        checkPermission(recordPermissions, context.getString(R.string.no_record_permission), hasPermissionRunnable);
+    }
+
+    public void checkCameraPermission(Runnable hasPermissionRunnable) {
+        checkPermission(cameraPermissions, context.getString(R.string.no_camera_permission), hasPermissionRunnable);
+    }
+
+    public void checkStoragePermission(Runnable hasPermissionRunnable) {
+        checkPermission(cameraPermissions, context.getString(R.string.no_read_permission), hasPermissionRunnable);
     }
 
     public void checkPermission(String[] permissions, Runnable hasPermissionDo, Runnable noPermissionDo) {
@@ -68,7 +85,7 @@ public class PermissionUtils {
         StringBuilder noPermissions = new StringBuilder();
         for (int i = 0; i < permissions.length; i++) {
             if (ContextCompat.checkSelfPermission(context, permissions[i]) != PackageManager.PERMISSION_GRANTED) {
-                if(i != 0) noPermissions.append(",");
+                if (i != 0) noPermissions.append(",");
                 noPermissions.append(permissions[i]);
             }
         }
