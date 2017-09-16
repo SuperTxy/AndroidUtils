@@ -18,6 +18,10 @@ public class ScreenUtils {
         return context.getResources().getDisplayMetrics().heightPixels;
     }
 
+    public static int getScreenWidth(Context context) {
+        return context.getResources().getDisplayMetrics().widthPixels;
+    }
+
     public int getStatusBarHeight(Context context) {
         int statusBarHeight = -1;
         int resId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
