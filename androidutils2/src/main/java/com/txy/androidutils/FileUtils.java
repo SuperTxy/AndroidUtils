@@ -23,6 +23,10 @@ public class FileUtils {
     public static File createTmpFile(Context context, String prefix, String suffix) throws IOException {
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format(new Date());
         prefix = prefix+"_" + date + "_";
+        return File.createTempFile(prefix, suffix, getFileDir(context));
+    }
+
+    public static File getFileDir(Context context){
         File dir;
         if (TextUtils.equals(getExternalStorageState(), MEDIA_MOUNTED)) {
             dir = Environment.getExternalStoragePublicDirectory(DIRECTORY_DCIM + "/Camera");
@@ -32,7 +36,7 @@ public class FileUtils {
         } else {
             dir = getCacheDirectory(context, true);
         }
-        return File.createTempFile(prefix, suffix, dir);
+        return dir;
     }
 
     public static File createIMGFile(Context context) throws IOException {
