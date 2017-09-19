@@ -72,7 +72,7 @@
         android:visibility="gone"
         android:gravity="center"
         android:text="确定"
-        android:id="@+id/tv_ok"
+        android:id="@+id/tv_one_ok"
         android:layout_width="match_parent"
         android:layout_height="54dp" />
 </LinearLayout>

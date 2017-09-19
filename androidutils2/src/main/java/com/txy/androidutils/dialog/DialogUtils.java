@@ -53,7 +53,7 @@ public class DialogUtils {
         final Dialog dialog = createDialog(holder);
         dialog.setCanceledOnTouchOutside(false);
         holder.show(title,message);
-        holder.tvOk.setOnClickListener(new View.OnClickListener() {
+        holder.tvOneOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(listener != null) listener.onClick(view);

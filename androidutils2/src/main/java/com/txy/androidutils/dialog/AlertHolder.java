@@ -18,7 +18,7 @@ class AlertHolder extends BaseHolder {
     TextView tvLeft;
     TextView tvRight;
     LinearLayout llDoubleButton;
-    TextView tvOk;
+    TextView tvOneOk;
 
     AlertHolder(Context context) {
         super(context);
@@ -26,13 +26,13 @@ class AlertHolder extends BaseHolder {
         tvMessage = (TextView) contentView.findViewById(R.id.tv_message);
         tvLeft = (TextView) contentView.findViewById(R.id.tv_left);
         tvRight = (TextView) contentView.findViewById(R.id.tv_right);
-        tvOk = (TextView) contentView.findViewById(R.id.tv_ok);
+        tvOneOk = (TextView) contentView.findViewById(R.id.tv_one_ok);
         llDoubleButton = (LinearLayout) contentView.findViewById(R.id.ll_double_button);
     }
 
     void show(String title, String message) {
         llDoubleButton.setVisibility(View.GONE);
-        tvOk.setVisibility(View.VISIBLE);
+        tvOneOk.setVisibility(View.VISIBLE);
         show(title,message,null,null);
     }
 
