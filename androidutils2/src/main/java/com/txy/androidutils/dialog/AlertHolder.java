@@ -50,6 +50,6 @@ class AlertHolder extends BaseHolder {
 
     @Override
     public int layoutId() {
-        return R.layout.alert_dialog;
+        return R.layout.layout1_alert_dialog;
     }
 }
