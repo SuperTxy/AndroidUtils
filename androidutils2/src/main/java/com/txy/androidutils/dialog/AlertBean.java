@@ -9,11 +9,11 @@ public class AlertBean {
     public String message;
     public String leftStr;
     public String rightStr;
-    public OnClickListener leftListener;
-    public OnClickListener rightListener;
+    public TxyOnClickListener leftListener;
+    public TxyOnClickListener rightListener;
 
     public AlertBean(String title, String message, String leftStr, String rightStr,
-                     OnClickListener leftListener, OnClickListener rightListener) {
+                     TxyOnClickListener leftListener, TxyOnClickListener rightListener) {
         this.title = title;
         this.message = message;
         this.leftStr = leftStr;
