@@ -7,7 +7,7 @@ import java.util.List;
  * Created by Apple on 17/9/11.
  */
 
-public class ListUtils {
+public class TxyListUtils {
 
     public static <T> boolean isEmpty(List<T> list) {
         return list == null || list.isEmpty();

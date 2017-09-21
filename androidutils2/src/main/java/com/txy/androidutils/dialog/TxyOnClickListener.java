@@ -6,6 +6,6 @@ import android.view.View;
  * Created by Apple on 17/9/10.
  */
 
-public interface OnClickListener {
+public interface TxyOnClickListener {
     void onClick(View v);
 }

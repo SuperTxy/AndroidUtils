@@ -7,7 +7,7 @@ import android.view.View;
  * Created by Apple on 17/9/11.
  */
 
-public class ScreenUtils {
+public class TxyScreenUtils {
 
     public static int dp2px(Context context, int dp) {
         float density = context.getResources().getDisplayMetrics().density;

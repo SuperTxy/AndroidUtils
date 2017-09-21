@@ -17,17 +17,17 @@ import java.util.List;
  * Created by Apple on 17/9/10.
  */
 
-public class DialogUtils {
+public class TxyDialogUtils {
 
     private Context context;
     private List<Dialog> dialogs = new ArrayList<>();
 
-    public DialogUtils(Context context) {
+    public TxyDialogUtils(Context context) {
         this.context = context;
     }
 
     public void showPermissionDialog(String message) {
-        OnClickListener rightListener = new OnClickListener() {
+        TxyOnClickListener rightListener = new TxyOnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
@@ -48,7 +48,7 @@ public class DialogUtils {
     /**
      * 只有确定按钮的对话框
      */
-    public void showOkDialog(String title, String message, final OnClickListener listener){
+    public void showOkDialog(String title, String message, final TxyOnClickListener listener){
         AlertHolder holder = new AlertHolder(context);
         final Dialog dialog = createDialog(holder);
         dialog.setCanceledOnTouchOutside(false);

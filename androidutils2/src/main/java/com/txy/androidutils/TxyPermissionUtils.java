@@ -8,29 +8,29 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
 import com.orhanobut.logger.Logger;
-import com.txy.androidutils.dialog.DialogUtils;
+import com.txy.androidutils.dialog.TxyDialogUtils;
 
 /**
  * Created by Apple on 17/9/10.
  */
 
-public class PermissionUtils {
+public class TxyPermissionUtils {
     private Runnable mHasPermissionRunnable;
     private Runnable mNoPermissionRunnable;
     private int REQUEST_CODE_PERMISSION = 1000;
     private Activity context;
-    private DialogUtils dialogUtils;
+    private TxyDialogUtils dialogUtils;
     private String[] recordPermissions = {Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA,
             Manifest.permission.WRITE_EXTERNAL_STORAGE};
     private String[] cameraPermissions = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
     private String[] storagePermissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
 
-    public PermissionUtils(Activity context) {
+    public TxyPermissionUtils(Activity context) {
         this.context = context;
     }
 
     public void checkPermission(String[] permissions, final String message, Runnable hasPermissionDo) {
-        dialogUtils = new DialogUtils(context);
+        dialogUtils = new TxyDialogUtils(context);
         checkPermission(permissions, hasPermissionDo, new Runnable() {
             @Override
             public void run() {

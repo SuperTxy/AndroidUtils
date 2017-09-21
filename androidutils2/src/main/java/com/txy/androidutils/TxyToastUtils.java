@@ -12,12 +12,12 @@ import java.util.List;
  * Created by Apple on 17/9/10.
  */
 
-public class ToastUtils {
+public class TxyToastUtils {
 
     private Context context;
     private List<Toast> toasts = new ArrayList<>();
 
-    public ToastUtils(Context context) {
+    public TxyToastUtils(Context context) {
         this.context = context;
     }
 

@@ -18,7 +18,7 @@ import static android.os.Environment.getExternalStorageState;
  * Created by Apple on 17/9/10.
  */
 
-public class FileUtils {
+public class TxyFileUtils {
 
     public static File createTmpFile(Context context, String prefix, String suffix) throws IOException {
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format(new Date());
