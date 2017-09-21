@@ -48,7 +48,11 @@ public class TxyPermissionUtils {
     }
 
     public void checkStoragePermission(Runnable hasPermissionRunnable) {
-        checkPermission(cameraPermissions, context.getString(R.string.no_read_permission), hasPermissionRunnable);
+        checkPermission(storagePermissions, context.getString(R.string.no_read_permission), hasPermissionRunnable);
+    }
+
+    public boolean isStorageGranted(){
+        return isPermissionGranted(storagePermissions);
     }
 
     public void checkPermission(String[] permissions, Runnable hasPermissionDo, Runnable noPermissionDo) {
