@@ -21,6 +21,21 @@ public class TxyToastUtils {
         this.context = context;
     }
 
+    public static void toastCenterResId(int resId,Context context) {
+        toastCenterStr(context.getString(resId),context);
+    }
+
+    public static void toastCenterStr(String str,Context context) {
+        Toast toast = Toast.makeText(context,str,Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+    }
+
+    public static void toast(String str,Context context) {
+        Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
+    }
+
+
     public void toastCenterStr(String str) {
         Toast toast = createToast(str);
         toast.setGravity(Gravity.CENTER, 0, 0);
