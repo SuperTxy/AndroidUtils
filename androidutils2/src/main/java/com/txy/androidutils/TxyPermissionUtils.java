@@ -39,12 +39,32 @@ public class TxyPermissionUtils {
         });
     }
 
-    public void checkRecordVideoPermission(Runnable hasPermissionRunnable) {
-        checkPermission(recordPermissions, context.getString(R.string.no_record_permission), hasPermissionRunnable);
+    public void checkRecordVideoPermission(final Runnable hasPermissionRunnable) {
+        checkPermission(recordPermissions, context.getString(R.string.no_record_permission), new Runnable() {
+            @Override
+            public void run() {
+                if(TxyCheckPermission.getRecordState() == TxyCheckPermission.STATE_SUCCESS) {
+                    if(TxyCheckPermission.isCameraUseable()) {
+                        hasPermissionRunnable.run();
+                    }else{
+                        dialogUtils.showPermissionDialog("不开启相机权限，无法录制视频哦~");
+                    }
+                }else{
+                    dialogUtils.showPermissionDialog(context.getString(R.string.no_record_permission));
+                }
+            }
+        });
     }
 
-    public void checkCameraPermission(Runnable hasPermissionRunnable) {
-        checkPermission(cameraPermissions, context.getString(R.string.no_camera_permission), hasPermissionRunnable);
+    public void checkCameraPermission(final Runnable hasPermissionRunnable) {
+        checkPermission(cameraPermissions, context.getString(R.string.no_camera_permission), new Runnable() {
+            @Override
+            public void run() {
+                if(TxyCheckPermission.isCameraUseable()) {
+                    hasPermissionRunnable.run();
+                }else dialogUtils.showPermissionDialog(context.getString(R.string.no_camera_permission));
+            }
+        });
     }
 
     public void checkStoragePermission(Runnable hasPermissionRunnable) {
