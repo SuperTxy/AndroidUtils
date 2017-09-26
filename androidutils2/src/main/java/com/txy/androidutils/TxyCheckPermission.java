@@ -39,7 +39,7 @@ public class TxyCheckPermission {
             }
             return STATE_NO_PERMISSION;
         }
-        if (audioRecord.getRecordingState() != AudioRecord.RECORDSTATE_RECORDING) {
+        if (audioRecord.getRecordingState() == AudioRecord.RECORDSTATE_RECORDING) {
             //6.0以下机型都会返回此状态，故使用时需要判断bulid版本
             //检测是否在录音中
             if (audioRecord != null) {

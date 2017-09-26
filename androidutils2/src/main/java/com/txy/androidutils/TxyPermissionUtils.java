@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.widget.Toast;
 
 import com.orhanobut.logger.Logger;
 import com.txy.androidutils.dialog.TxyDialogUtils;
@@ -41,7 +40,7 @@ public class TxyPermissionUtils {
     }
 
     public void checkRecordVideoPermission(final Runnable hasPermissionRunnable) {
-        checkPermission(recordPermissions, context.getString(R.string.no_record_permission), new Runnable() {
+        checkPermission(recordPermissions, context.getString(R.string.no_record_video_permission), new Runnable() {
             @Override
             public void run() {
                 if(TxyCheckPermission.getRecordState() == TxyCheckPermission.STATE_SUCCESS) {
@@ -50,11 +49,7 @@ public class TxyPermissionUtils {
                     }else{
                         dialogUtils.showPermissionDialog("不开启相机权限，无法录制视频哦~");
                     }
-                }else if(TxyCheckPermission.getRecordState() == TxyCheckPermission.STATE_NO_PERMISSION){
-                    dialogUtils.showPermissionDialog(context.getString(R.string.no_record_permission));
-                }else if(TxyCheckPermission.getRecordState() == TxyCheckPermission.STATE_RECORDING) {
-                    Toast.makeText(context, "很抱歉，录音机被占用!", Toast.LENGTH_SHORT).show();
-                }
+                }else dialogUtils.showPermissionDialog(context.getString(R.string.no_record_video_permission));
             }
         });
     }
