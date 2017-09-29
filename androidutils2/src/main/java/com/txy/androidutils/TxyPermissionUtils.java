@@ -15,6 +15,7 @@ import com.txy.androidutils.dialog.TxyDialogUtils;
  */
 
 public class TxyPermissionUtils {
+
     private Runnable mHasPermissionRunnable;
     private Runnable mNoPermissionRunnable;
     private int REQUEST_CODE_PERMISSION = 1000;
@@ -24,6 +25,7 @@ public class TxyPermissionUtils {
             Manifest.permission.WRITE_EXTERNAL_STORAGE};
     private String[] cameraPermissions = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
     private String[] storagePermissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+    private String[] audioPermissions = {Manifest.permission.RECORD_AUDIO};
 
     public TxyPermissionUtils(Activity context) {
         this.context = context;
@@ -37,6 +39,20 @@ public class TxyPermissionUtils {
                 dialogUtils.showPermissionDialog(message);
             }
         });
+    }
+
+    public void checkAudioPermission(final Runnable hasPermissionRunnable, final String message){
+        checkPermission(audioPermissions, message, new Runnable() {
+            @Override
+            public void run() {
+                if(TxyCheckPermission.getRecordState() == TxyCheckPermission.STATE_SUCCESS) {
+                    hasPermissionRunnable.run();
+                }else  dialogUtils.showPermissionDialog(message);
+            }
+        });
+    }
+    public void checkAudioPermission( Runnable hasPermissionRunnable){
+        checkAudioPermission(hasPermissionRunnable,context.getString(R.string.no_audio_video_permission));
     }
 
     public void checkRecordVideoPermission(final Runnable hasPermissionRunnable) {

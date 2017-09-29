@@ -3,4 +3,5 @@
     <string name="no_record_video_permission">不开启录音拍照等权限，无法录制视频哦~</string>
     <string name="no_camera_permission">不开启相机权限，无法拍照哦~</string>
     <string name="no_read_permission">不开启存储权限，无法访问相册哦~</string>
+    <string name="no_audio_video_permission">不开启录音权限，无法录制视频哦~</string>
 </resources>
