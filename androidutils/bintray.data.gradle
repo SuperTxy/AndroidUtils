@@ -1,0 +1,23 @@
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'androidutils'
+    bintrayUserOrg = 'supertxy'
+    publishedGroupId = 'com.supertxy.androidutils'
+    libraryName = 'androidutils'
+    artifact = 'androidutils'
+
+    libraryDescription = "androidutils"
+
+    siteUrl = 'https://github.com/SuperTxy/AndroidUtils'
+    gitUrl = 'https://github.com/SuperTxy/AndroidUtils.git'
+
+    libraryVersion = 'v0.1.9'
+
+    developerId = 'supertxy'
+    developerName = 'xiaoyan tan'
+    developerEmail = 'txyswl@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
